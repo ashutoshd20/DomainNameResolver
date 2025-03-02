@@ -30,10 +30,14 @@ python3 dnsresolver.py recursive example.com
 ### Iterative Mode
 - Starts with root DNS servers.
 - Iteratively queries the next level of authoritative nameservers until it reaches the final answer.
+- The load of the process lies with the user.
 
 ### Recursive Mode
 - Uses a system-configured resolver (e.g., ISP resolver, Google DNS).
 - Fetches the result directly without manual iterative querying.
+- The load is not on the user's device.
+
+![DNS Lookup Flow](dns_query.png)
 
 ## Code Structure
 - **`send_dns_query(server, domain)`**: Sends a DNS query to a specified server.
@@ -104,7 +108,7 @@ Uses a recursive DNS resolver (e.g., system’s default resolver) to resolve a d
 
 
 
-## Example Output
+## Example Output for recursive
 ```sh
 [Iterative DNS Lookup] Resolving example.com
 [DEBUG] Querying ROOT server (198.41.0.4) - SUCCESS
